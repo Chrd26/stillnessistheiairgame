@@ -5,79 +5,122 @@ using UnityEngine.InputSystem;
 
 public class playerMovement : MonoBehaviour
 {
-    public float speed = 10;
-    public float jumpForce = 5;
-    private float gravity = -9.81f;
+    //Declare Variables
+    public float speed = 8f;
+    public float jumpForce = 0.5f;
+    private float gravity = -70f;
+    public float mouseX;
+    public float mouseY;
+    private Vector3 velocity;
+    public float rotationSpeed = 100.0f;
     bool canJump;
     bool isonGround;
-    private Vector3 velocity;
+    bool isCrouching;
+    bool isRunning;
+
     // Start is called before the first frame update
     void Start()
     {
         Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-       
+        Cursor.lockState = CursorLockMode.Locked;    
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Declare Variables.
         CharacterController controller = GetComponent<CharacterController>();
         Vector3 controllerVelocity = GetComponent<CharacterController>().velocity;
-        Vector3 mousePOS = Input.mousePosition;
 
-        Debug.Log(mousePOS.x);
-        Debug.Log(mousePOS.y);
-
+        //rotate the player when the mouse moves.
+        mouseX = Mathf.Clamp(mouseX + Input.GetAxis("Mouse Y") * rotationSpeed * -1, -90f, 90f);
+        mouseY = mouseY + Input.GetAxis("Mouse X") * rotationSpeed;
+       
+        transform.rotation = Quaternion.Euler(new Vector3(mouseX, mouseY, 0));
+      
+        //Check if the player is on the ground.
         isonGround = controller.isGrounded;
 
+        // The player moves around based on the camera position and can jump if the player touches the ground.
 
-        if (Input.GetButton("Vertical") && isonGround)
+        if (controller.isGrounded)
         {
-            velocity.z = Input.GetAxis("Vertical") * speed;
-        }else if (Input.GetButtonUp("Vertical"))
-        {
-            velocity.z = 0;
-        }
 
-        if (Input.GetButton("Horizontal") && isonGround)
-        {
-            velocity.x = Input.GetAxis("Horizontal") * speed;
-           
-        }
-        else if (Input.GetButtonUp("Horizontal"))
-        {
-            velocity.x = 0;
-        }
+            velocity = new Vector3(Input.GetAxis("Horizontal") * speed, 0, Input.GetAxis("Vertical") * speed);
+            velocity = Camera.main.transform.TransformDirection(velocity);
+            velocity.y = 0;
 
-
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (isonGround)
-            {
-                velocity.y = 0.0f;
-            }
-
-            if(canJump && isonGround)
+            if (Input.GetButton("Jump"))
             {
                 velocity.y += Mathf.Sqrt(jumpForce * -1 * gravity);
-                canJump = false;
             }
 
-            if(controller.velocity.y == 0)
+        }
+
+
+        //Run Logic When the shift button is pressed then the player will gradually move faster.
+
+        if (isRunning && !isCrouching)
+        {
+            speed = Mathf.Clamp(speed + 15.0f * Time.deltaTime, 8, 20);
+        }
+  
+
+        if (Input.GetButton("Run"))
+        {
+           
+            isRunning = true;
+
+        }else if (Input.GetButtonUp("Run"))
+        {
+            isRunning = false;
+            
+        }
+
+
+        //Crouch Logic When the left ctrl button is pressed then the player will gradually lower down and move slower and sneak.
+
+        if (isCrouching)
+        {
+            
+            speed = Mathf.Clamp(speed - 15.0f * Time.deltaTime, 3, 8);
+            transform.localScale = new Vector3(1.0f, Mathf.Clamp(transform.localScale.y - 2.0f * Time.deltaTime, 0.5f, 1f), 1.0f); 
+
+        }
+
+
+        if (Input.GetButton("Crouch"))
+        {
+            isCrouching = true;
+        }
+        else if (Input.GetButtonUp("Crouch"))
+        {
+
+            isCrouching = false;
+            
+        }
+
+        //Return to the original speed and scale value.
+
+        if (!isCrouching && !isRunning)
+        {
+            if (speed > 8)
             {
-                canJump = true;
+                speed = Mathf.Clamp(speed - 15.0f * Time.deltaTime, 8, 20);
             }
             else
             {
-                canJump = false;
+                speed = Mathf.Clamp(speed + 15.0f * Time.deltaTime, 3, 8);
+                transform.localScale = new Vector3(1.0f, Mathf.Clamp(transform.localScale.y + 2.0f * Time.deltaTime, 0.5f, 1f), 1.0f);
             }
-
         }
+
+      
+        //Gravity and add move velocity to the controller.
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+        
         
        
 
