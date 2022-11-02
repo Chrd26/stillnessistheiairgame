@@ -7,8 +7,8 @@ public class playerMovement : MonoBehaviour
 {
     //Declare Variables
     public float speed = 8f;
-    public float jumpForce = 0.5f;
-    private float gravity = -70f;
+    public float jumpForce = 80;
+    private float gravity = -30;
     public float mouseX;
     public float mouseY;
     private Vector3 velocity;
@@ -21,6 +21,7 @@ public class playerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Hide the cursor and lock in place.
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;    
     }
@@ -35,9 +36,8 @@ public class playerMovement : MonoBehaviour
         //rotate the player when the mouse moves.
         mouseX = Mathf.Clamp(mouseX + Input.GetAxis("Mouse Y") * rotationSpeed * -1, -90f, 90f);
         mouseY = mouseY + Input.GetAxis("Mouse X") * rotationSpeed;
-       
-        transform.rotation = Quaternion.Euler(new Vector3(mouseX, mouseY, 0));
-      
+        Camera.main.transform.rotation = Quaternion.Euler(new Vector3(mouseX, mouseY, 0));
+
         //Check if the player is on the ground.
         isonGround = controller.isGrounded;
 
@@ -52,7 +52,7 @@ public class playerMovement : MonoBehaviour
 
             if (Input.GetButton("Jump"))
             {
-                velocity.y += Mathf.Sqrt(jumpForce * -1 * gravity);
+                velocity.y += jumpForce;
             }
 
         }
