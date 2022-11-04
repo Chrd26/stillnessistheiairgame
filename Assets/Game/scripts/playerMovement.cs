@@ -12,7 +12,7 @@ public class playerMovement : MonoBehaviour
     public float mouseX;
     public float mouseY;
     private Vector3 velocity;
-    public float rotationSpeed = 100.0f;
+    public float rotationSpeed = 200.0f;
     bool canJump;
     bool isonGround;
     bool isCrouching;
