@@ -60,13 +60,13 @@ public class playerMovement : MonoBehaviour
 
         //Run Logic When the shift button is pressed then the player will gradually move faster.
 
-        if (isRunning && !isCrouching)
+        if (isRunning)
         {
             speed = Mathf.Clamp(speed + 15.0f * Time.deltaTime, 8, 20);
         }
   
 
-        if (Input.GetButton("Run"))
+        if (Input.GetButton("Run") && !isCrouching)
         {
            
             isRunning = true;
@@ -84,7 +84,7 @@ public class playerMovement : MonoBehaviour
         {
             
             speed = Mathf.Clamp(speed - 15.0f * Time.deltaTime, 3, 8);
-            transform.localScale = new Vector3(1.0f, Mathf.Clamp(transform.localScale.y - 2.0f * Time.deltaTime, 0.5f, 1f), 1.0f); 
+            transform.localScale = new Vector3(1.0f, Mathf.Clamp(transform.localScale.y - 2.0f * Time.deltaTime, 0.9f, 1.8f), 1.0f); 
 
         }
 
@@ -111,7 +111,7 @@ public class playerMovement : MonoBehaviour
             else
             {
                 speed = Mathf.Clamp(speed + 15.0f * Time.deltaTime, 3, 8);
-                transform.localScale = new Vector3(1.0f, Mathf.Clamp(transform.localScale.y + 2.0f * Time.deltaTime, 0.5f, 1f), 1.0f);
+                transform.localScale = new Vector3(1.0f, Mathf.Clamp(transform.localScale.y + 2.0f * Time.deltaTime, 0.5f, 1.8f), 1.0f);
             }
         }
 
