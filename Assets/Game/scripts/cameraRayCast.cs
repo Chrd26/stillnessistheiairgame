@@ -31,13 +31,12 @@ public class cameraRayCast : MonoBehaviour
         {
             if (Input.GetButton("Use"))
             {
-                if (hit.collider.gameObject.CompareTag("YellowSphere")) {
+               if (hit.collider.gameObject.CompareTag("YellowSphere")) {
 
                     Debug.Log("Destroy Yellow Sphere");
                     GameManager.Instance.isYellowSphereTaken = true;
-
                 }
-
+               
                 //Get the game object that the raycast hits and destroy it.
                 rayCasterObject = hit.collider.gameObject;
                 Destroy(rayCasterObject);

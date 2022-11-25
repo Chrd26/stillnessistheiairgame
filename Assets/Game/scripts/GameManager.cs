@@ -12,4 +12,12 @@ public class GameManager : MonoBehaviour
     public bool isPurpleSpheretaken = false;
     public bool isGreenSphereTaken = false;
 
+    private void Awake()
+    {
+        if (Instance == null) {
+
+            Instance = this;
+	}
+    }
+
 }
