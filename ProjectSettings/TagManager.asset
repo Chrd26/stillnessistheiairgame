@@ -6,6 +6,8 @@ TagManager:
   tags:
   - floor
   - Lever
+  - InteractiveItems
+  - YellowSphere
   layers:
   - Default
   - TransparentFX

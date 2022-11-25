@@ -18,28 +18,33 @@ public class cameraRayCast : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+
         //Get the the forward position of the camera and the Interactive Items layer, so
         //the raycast only counts hits with that certain layer.
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
         LayerMask hitInteractiveObject = LayerMask.GetMask("Interactive Items");
 
-        //Check if the raycst hits an object that nelongs to the Interactibe Items Layer
+        //Check if the raycst hits an object that nelongs to the Interactible Items Layer
         // Raycast declaration and arguments
         // Physics.Raycast(origin, ray direction, out Racasthit, max distance, layer mask)
-        if (Physics.Raycast(transform.position, fwd, out hit, 2, hitInteractiveObject))
+        if (Physics.Raycast(transform.position, fwd, out hit, 5, hitInteractiveObject))
         {
-            Debug.Log(hit.collider.gameObject.name);
-
             if (Input.GetButton("Use"))
             {
-                //Get the game object that the racast hits and destroy it.
+                if (hit.collider.gameObject.CompareTag("YellowSphere")) {
+
+                    Debug.Log("Destroy Yellow Sphere");
+                    GameManager.Instance.isYellowSphereTaken = true;
+
+                }
+
+                //Get the game object that the raycast hits and destroy it.
                 rayCasterObject = hit.collider.gameObject;
                 Destroy(rayCasterObject);
             }
-           
         }
 
-
     }
+
+
 }
