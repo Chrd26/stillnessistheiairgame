@@ -8,6 +8,8 @@ TagManager:
   - Lever
   - InteractiveItems
   - YellowSphere
+  - StopButton
+  - ResetButton
   layers:
   - Default
   - TransparentFX

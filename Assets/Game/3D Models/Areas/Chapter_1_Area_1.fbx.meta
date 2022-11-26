@@ -1939,6 +1939,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: EmissiveMaterial.027
+    second: {fileID: 2100000, guid: 44c1cddb70fe44cd6ab958c936f7ae7d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: YellowSphere
     second: {fileID: 2100000, guid: 3ee97c0d83a984718b77f51348269ebe, type: 2}
   materials:

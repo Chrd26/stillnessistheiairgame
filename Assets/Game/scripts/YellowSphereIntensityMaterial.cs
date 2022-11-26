@@ -34,7 +34,6 @@ public class YellowSphereIntensityMaterial : MonoBehaviour
 
         }
 
-
         Y_Material.SetColor("_EmissiveColor", new Color(increaseItensity, increaseItensity, 0, 255));
 
     }
