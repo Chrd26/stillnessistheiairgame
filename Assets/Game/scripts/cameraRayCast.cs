@@ -10,15 +10,11 @@ public class cameraRayCast : MonoBehaviour
     public GameObject rayCasterObject;
     bool isSelected;
 
-
     private void Update()
     {
         //Draw a line to see the placement of the raycast.
         Debug.DrawLine(transform.position, new Vector3(0, 0, 2), Color.green);
-    }
 
-    private void FixedUpdate()
-    {
         //Get the the forward position of the camera and the Interactive Items layer, so
         //the raycast only counts hits with that certain layer.
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
@@ -31,9 +27,10 @@ public class cameraRayCast : MonoBehaviour
         {
             if (Input.GetButtonDown("Use"))
             {
-               if (hit.collider.gameObject.CompareTag("YellowSphere")) {
 
-                    Debug.Log("Destroy Yellow Sphere");
+                if (hit.collider.gameObject.CompareTag("YellowSphere"))
+                {
+
                     GameManager.Instance.isYellowSphereTaken = true;
 
                     //Get the game object that the raycast hits and destroy it.
@@ -41,38 +38,60 @@ public class cameraRayCast : MonoBehaviour
                     Destroy(rayCasterObject);
                 }
 
-               if (hit.collider.gameObject.CompareTag("StopButton")) { 
+                if (hit.collider.gameObject.CompareTag("PurpleSphere"))
+                {
 
-                    if (GameManager.Instance.isPlatform1Moving) {
+                    GameManager.Instance.isPurpleSpheretaken = true;
+
+                    //Get the game object that the raycast hits and destroy it.
+                    rayCasterObject = hit.collider.gameObject;
+                    Destroy(rayCasterObject);
+                }
+
+                if (hit.collider.gameObject.CompareTag("StopButton"))
+                {
+
+                    if (GameManager.Instance.isPlatform1Moving)
+                    {
 
                         GameManager.Instance.isPlatform1Moving = false;
 
-		            }else if(!GameManager.Instance.isPlatform1Moving && GameManager.Instance.isPlatform2Moving){
+                    }
+                    else if (!GameManager.Instance.isPlatform1Moving && GameManager.Instance.isPlatform2Moving)
+                    {
 
                         GameManager.Instance.isPlatform2Moving = false;
 
-                    }else if (!GameManager.Instance.isPlatform2Moving && GameManager.Instance.isPlatform3Moving) {
+                    }
+                    else if (!GameManager.Instance.isPlatform2Moving && GameManager.Instance.isPlatform3Moving)
+                    {
 
                         GameManager.Instance.isPlatform3Moving = false;
-		    
-		             }else if (!GameManager.Instance.isPlatform3Moving && GameManager.Instance.isPlatform4Moving) {
+
+                    }
+                    else if (!GameManager.Instance.isPlatform3Moving && GameManager.Instance.isPlatform4Moving)
+                    {
 
                         GameManager.Instance.isPlatform4Moving = false;
 
-		             }else if (!GameManager.Instance.isPlatform4Moving && GameManager.Instance.isPlatform5Moving) {
+                    }
+                    else if (!GameManager.Instance.isPlatform4Moving && GameManager.Instance.isPlatform5Moving)
+                    {
 
                         GameManager.Instance.isPlatform5Moving = false;
 
-		             }else if (!GameManager.Instance.isPlatform5Moving && GameManager.Instance.isPlatform6Moving) {
+                    }
+                    else if (!GameManager.Instance.isPlatform5Moving && GameManager.Instance.isPlatform6Moving)
+                    {
 
                         GameManager.Instance.isPlatform6Moving = false;
 
-		             }
+                    }
+                }
 
 
-               }
-               
-	      if (hit.collider.gameObject.CompareTag("ResetButton")) {
+                if (hit.collider.gameObject.CompareTag("ResetButton"))
+                {
 
                     GameManager.Instance.isPlatform1Moving = true;
                     GameManager.Instance.isPlatform2Moving = true;
@@ -84,9 +103,8 @@ public class cameraRayCast : MonoBehaviour
                 }
 
             }
+
         }
-
     }
-
 
 }

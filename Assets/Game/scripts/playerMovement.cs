@@ -115,14 +115,11 @@ public class playerMovement : MonoBehaviour
             }
         }
 
-      
-        //Gravity and add move velocity to the controller.
 
+        //Gravity and add move velocity to the controller and sync physics to be able to teleport around.
+        Physics.SyncTransforms();
         velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
-        
-        
-       
+        controller.Move(velocity * Time.deltaTime);       
 
     }
 

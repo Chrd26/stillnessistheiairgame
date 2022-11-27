@@ -10,6 +10,8 @@ TagManager:
   - YellowSphere
   - StopButton
   - ResetButton
+  - Boundary
+  - PurpleSphere
   layers:
   - Default
   - TransparentFX

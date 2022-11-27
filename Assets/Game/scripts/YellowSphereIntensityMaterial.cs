@@ -28,7 +28,7 @@ public class YellowSphereIntensityMaterial : MonoBehaviour
             increaseItensity -= 0.5f;
         }
 
-	        if (increaseItensity > 300 || increaseItensity < -100)
+	        if (increaseItensity < 0 || increaseItensity > 255)
         {
             increase = !increase;
 

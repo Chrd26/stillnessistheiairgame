@@ -1939,13 +1939,73 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: BlackMaterial
+    second: {fileID: 2100000, guid: b8ccc966a75e34592a74cd2e53acf2e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dark Material
+    second: {fileID: 2100000, guid: b8ccc966a75e34592a74cd2e53acf2e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DarkMaterial
+    second: {fileID: 2100000, guid: b8ccc966a75e34592a74cd2e53acf2e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EmissiveMaterial
+    second: {fileID: 2100000, guid: 88bd7a00e76ef4e49a0a031ed95b319f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: EmissiveMaterial.027
     second: {fileID: 2100000, guid: 44c1cddb70fe44cd6ab958c936f7ae7d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: EmissiveMaterial.028
+    second: {fileID: 2100000, guid: 5fc154c7686b94fd0af54a3907d6be3a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EmissiveMaterial.029
+    second: {fileID: 2100000, guid: 185f1517898194aada236666d2194a9f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EmissiveMaterial_
+    second: {fileID: 2100000, guid: 0e32ee35a6a7942278d0ec5e8e38fd0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EmmisiveMaterial
+    second: {fileID: 2100000, guid: 67196289704c5402e87ce85de57ab99e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Purple
+    second: {fileID: 2100000, guid: 1fed1080ab753457b89d67be2d104e99, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Yellow
+    second: {fileID: 2100000, guid: f4bc04025d2b245b1814a251e571d528, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: YellowSphere
     second: {fileID: 2100000, guid: 3ee97c0d83a984718b77f51348269ebe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: YellowSphere.003
+    second: {fileID: 2100000, guid: 839a996dd92f349a989ab7e5ea81dc11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: emissive2
+    second: {fileID: 2100000, guid: dbc397befa6644bc19525fe679b2e466, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

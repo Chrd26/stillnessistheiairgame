@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingPlatform1Logic : MonoBehaviour
+public class MovingPlatform2Logic : MonoBehaviour
 {
     bool playAnim = false;
     private Animation getAnimation;
     private Material platfromMat;
     bool isPlayerColliding = false;
     float red = 0;
-    float  blue = 0;
-    float  green = 0;
+    float blue = 0;
+    float green = 0;
 
     private void Awake()
     {
@@ -20,20 +20,22 @@ public class MovingPlatform1Logic : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player")) {
+        if (other.gameObject.CompareTag("Player"))
+        {
 
             isPlayerColliding = true;
 
-	    }
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player")) {
+        if (other.gameObject.CompareTag("Player"))
+        {
 
             isPlayerColliding = false;
-	
-	    }
+
+        }
     }
 
     void Update()
@@ -44,16 +46,17 @@ public class MovingPlatform1Logic : MonoBehaviour
 
     }
 
-    private void AnimationManager() {
+    private void AnimationManager()
+    {
 
-        if (!GameManager.Instance.isPlatform1Moving)
+        if (!GameManager.Instance.isPlatform2Moving)
         {
 
             getAnimation.Stop();
             playAnim = false;
 
         }
-        else if (GameManager.Instance.isPlatform1Moving && !playAnim)
+        else if (GameManager.Instance.isPlatform2Moving && !playAnim)
         {
 
             getAnimation.Play();
@@ -63,7 +66,8 @@ public class MovingPlatform1Logic : MonoBehaviour
     }
 
 
-    private void PlatformGlow() {
+    private void PlatformGlow()
+    {
 
         if (isPlayerColliding)
         {
