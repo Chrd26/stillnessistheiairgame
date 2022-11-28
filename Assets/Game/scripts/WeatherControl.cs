@@ -56,13 +56,13 @@ public class WeatherControl : MonoBehaviour
         if (fogIncreasing)
         {
 
-            setFogAtt += 0.1f * Time.deltaTime;
+            setFogAtt += 0.5f * Time.deltaTime;
 
         }
         else
         {
 
-            setFogAtt -= 0.1f * Time.deltaTime;
+            setFogAtt -= 0.5f * Time.deltaTime;
 
         }
 

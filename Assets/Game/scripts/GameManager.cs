@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public bool isPlatform5Moving = true;
     public bool isPlatform6Moving = true;
 
+    public bool isLookingAtInteractable = false;
+
     //Check if the instance is null, if it is then add this script to the instance
 
     private void Awake()
@@ -31,5 +33,4 @@ public class GameManager : MonoBehaviour
             Instance = this;
 	}
     }
-
 }

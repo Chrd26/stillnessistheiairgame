@@ -32,11 +32,13 @@ public class ArtifactLogic : MonoBehaviour
         purple = 5.0f;
         green = 5.0f;
 
-        for (int i = 0; i < 6; i++) {
+     /*   for (int i = 0; i < 6; i++) {
 
             Debug.Log(getMaterial[i]);
 
         }
+
+        */
           
     }
 

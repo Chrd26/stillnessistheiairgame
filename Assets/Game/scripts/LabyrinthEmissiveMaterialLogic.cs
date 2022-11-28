@@ -30,7 +30,8 @@ public class LabyrinthEmissiveMaterialLogic : MonoBehaviour
 
     private void Increase_Decrease()
     {
-        if (intensity < 0 || intensity > 150)
+        if (intensity < -100 || intensity > 150)
+
         {
             isIncreasing = !isIncreasing;
         }

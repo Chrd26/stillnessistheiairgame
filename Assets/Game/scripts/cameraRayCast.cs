@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class cameraRayCast : MonoBehaviour
 {
+    public static cameraRayCast publicInstance;
 
     //Deflare Viarables
     RaycastHit hit;
     public GameObject rayCasterObject;
     bool isSelected;
+
+    private void Awake()
+    {
+        if (publicInstance == null)
+        {
+            publicInstance = this;
+        }
+    }
 
     private void Update()
     {
@@ -25,6 +34,8 @@ public class cameraRayCast : MonoBehaviour
         // Physics.Raycast(origin, ray direction, out Racasthit, max distance, layer mask)
         if (Physics.Raycast(transform.position, fwd, out hit, 5, hitInteractiveObject))
         {
+            GameManager.Instance.isLookingAtInteractable = true;
+
             if (Input.GetButtonDown("Use"))
             {
 
@@ -50,7 +61,6 @@ public class cameraRayCast : MonoBehaviour
 
                 if (hit.collider.gameObject.CompareTag("YellowSphere"))
                 {
-
                     GameManager.Instance.isYellowSphereTaken = true;
 
                     //Get the game object that the raycast hits and destroy it.
@@ -60,7 +70,6 @@ public class cameraRayCast : MonoBehaviour
 
                 if (hit.collider.gameObject.CompareTag("PurpleSphere"))
                 {
-
                     GameManager.Instance.isPurpleSpheretaken = true;
 
                     //Get the game object that the raycast hits and destroy it.
@@ -73,58 +82,47 @@ public class cameraRayCast : MonoBehaviour
 
                     if (GameManager.Instance.isPlatform1Moving)
                     {
-
                         GameManager.Instance.isPlatform1Moving = false;
-
                     }
                     else if (!GameManager.Instance.isPlatform1Moving && GameManager.Instance.isPlatform2Moving)
                     {
-
                         GameManager.Instance.isPlatform2Moving = false;
-
                     }
                     else if (!GameManager.Instance.isPlatform2Moving && GameManager.Instance.isPlatform3Moving)
                     {
-
                         GameManager.Instance.isPlatform3Moving = false;
-
                     }
                     else if (!GameManager.Instance.isPlatform3Moving && GameManager.Instance.isPlatform4Moving)
                     {
-
                         GameManager.Instance.isPlatform4Moving = false;
-
                     }
                     else if (!GameManager.Instance.isPlatform4Moving && GameManager.Instance.isPlatform5Moving)
                     {
-
                         GameManager.Instance.isPlatform5Moving = false;
-
                     }
                     else if (!GameManager.Instance.isPlatform5Moving && GameManager.Instance.isPlatform6Moving)
                     {
-
                         GameManager.Instance.isPlatform6Moving = false;
-
                     }
                 }
 
 
                 if (hit.collider.gameObject.CompareTag("ResetButton"))
                 {
-
                     GameManager.Instance.isPlatform1Moving = true;
                     GameManager.Instance.isPlatform2Moving = true;
                     GameManager.Instance.isPlatform3Moving = true;
                     GameManager.Instance.isPlatform4Moving = true;
                     GameManager.Instance.isPlatform5Moving = true;
                     GameManager.Instance.isPlatform6Moving = true;
-
                 }
 
             }
 
         }
+        else
+        {
+            GameManager.Instance.isLookingAtInteractable = false;
+        }
     }
-
 }
