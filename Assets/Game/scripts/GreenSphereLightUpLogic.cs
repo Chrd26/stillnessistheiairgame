@@ -2,27 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PurpleSphereMaterialLogic : MonoBehaviour
+public class GreenSphereLightUpLogic : MonoBehaviour
 {
-    private Material P_Material;
+    private Material G_Material;
     private float IncreaseIntensity;
     bool isIncreasing = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        P_Material = GetComponent<Renderer>().material;
+        G_Material = GetComponent<Renderer>().material;
         IncreaseIntensity = 25.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        changePMaterialDynamically();   
+        changePGaterialDynamically();
     }
 
 
-    void changePMaterialDynamically()
+    void changePGaterialDynamically()
     {
 
         if (IncreaseIntensity < 0 || IncreaseIntensity > 255)
@@ -41,6 +41,6 @@ public class PurpleSphereMaterialLogic : MonoBehaviour
             IncreaseIntensity += -0.5f;
         }
 
-        P_Material.SetColor("_EmissiveColor", Color.magenta * IncreaseIntensity);
+        G_Material.SetColor("_EmissiveColor", Color.green * IncreaseIntensity);
     }
 }

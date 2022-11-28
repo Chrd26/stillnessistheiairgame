@@ -28,6 +28,26 @@ public class cameraRayCast : MonoBehaviour
             if (Input.GetButtonDown("Use"))
             {
 
+                if (hit.collider.gameObject.CompareTag("RedSphere"))
+                {
+
+                    GameManager.Instance.isRedSphereTaken = true;
+
+                    //Get the game object that the raycast hits and destroy it.
+                    rayCasterObject = hit.collider.gameObject;
+                    Destroy(rayCasterObject);
+                }
+
+                if (hit.collider.gameObject.CompareTag("GreenSphere"))
+                {
+
+                    GameManager.Instance.isGreenSphereTaken = true;
+
+                    //Get the game object that the raycast hits and destroy it.
+                    rayCasterObject = hit.collider.gameObject;
+                    Destroy(rayCasterObject);
+                }
+
                 if (hit.collider.gameObject.CompareTag("YellowSphere"))
                 {
 

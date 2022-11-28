@@ -2004,8 +2004,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: YellowSphere.004
+    second: {fileID: 2100000, guid: 329a0723e3533429f8da570f2f9cf373, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: emissive2
     second: {fileID: 2100000, guid: dbc397befa6644bc19525fe679b2e466, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green
+    second: {fileID: 2100000, guid: b51fd987a31de4343a4c79cd46de804c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

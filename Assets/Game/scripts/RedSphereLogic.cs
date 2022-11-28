@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class YellowSphereIntensityMaterial : MonoBehaviour
+public class RedSphereLogic : MonoBehaviour
 {
 
-    Material Y_Material;
+    Material R_Material;
     float increaseItensity;
     bool increase;
 
     // Start is called before the first frame update
     void Start()
     {
-        Y_Material = GetComponent<Renderer>().material;
+        R_Material = GetComponent<Renderer>().material;
 
     }
 
@@ -28,13 +28,13 @@ public class YellowSphereIntensityMaterial : MonoBehaviour
             increaseItensity -= 0.5f;
         }
 
-	        if (increaseItensity < 0 || increaseItensity > 255)
+        if (increaseItensity < 0 || increaseItensity > 255)
         {
             increase = !increase;
 
         }
 
-        Y_Material.SetColor("_EmissiveColor", Color.yellow * increaseItensity);
+        R_Material.SetColor("_EmissiveColor", Color.red * increaseItensity);
 
     }
 
@@ -43,5 +43,4 @@ public class YellowSphereIntensityMaterial : MonoBehaviour
     {
         changeEmission();
     }
-
 }

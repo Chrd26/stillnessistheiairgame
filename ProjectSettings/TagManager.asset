@@ -12,6 +12,8 @@ TagManager:
   - ResetButton
   - Boundary
   - PurpleSphere
+  - GreenSphere
+  - RedSphere
   layers:
   - Default
   - TransparentFX

@@ -17,6 +17,7 @@ public class playerMovement : MonoBehaviour
     bool isonGround;
     bool isCrouching;
     bool isRunning;
+    bool hasTeleportedAtGreenSphere = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,13 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (GameManager.Instance.isGreenSphereTaken && !hasTeleportedAtGreenSphere)
+        {
+            transform.position = new Vector3(-90.33f, 32.34f, -0.44f);
+            hasTeleportedAtGreenSphere = true;
+        }
+
         //Declare Variables.
         CharacterController controller = GetComponent<CharacterController>();
         Vector3 controllerVelocity = GetComponent<CharacterController>().velocity;
