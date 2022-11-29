@@ -44,7 +44,7 @@ public class ArtifactLogic : MonoBehaviour
 
     void Update()
     {
-        //Lights Logici
+        //Lights Logic
         YellowLight();
         PurpleLight();
         GreenLight();
