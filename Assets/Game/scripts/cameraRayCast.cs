@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class cameraRayCast : MonoBehaviour
 {
     public static cameraRayCast publicInstance;
 
-    //Deflare Viarables
+    //Declare Raycast Variable Viarables
     RaycastHit hit;
     public GameObject rayCasterObject;
-    bool isSelected;
+
+    //Declare Audio Variables
+    public AudioSource interaction;
 
     private void Awake()
     {
@@ -34,15 +37,25 @@ public class cameraRayCast : MonoBehaviour
         // Physics.Raycast(origin, ray direction, out Racasthit, max distance, layer mask)
         if (Physics.Raycast(transform.position, fwd, out hit, 5, hitInteractiveObject))
         {
+            //Set the isLookingAtInteractable to true to make the interaction text appear.
             GameManager.Instance.isLookingAtInteractable = true;
 
             if (Input.GetButtonDown("Use"))
             {
+                if (GameManager.Instance.isGreenSphereTaken && GameManager.Instance.isYellowSphereTaken && GameManager.Instance.isRedSphereTaken && GameManager.Instance.isPurpleSpheretaken)
+                {
+                    if (hit.collider.gameObject.CompareTag("Artifact"))
+                    {
+                        InteractionSound();                
+                        SceneManager.LoadSceneAsync("Chapter2", LoadSceneMode.Single);
+                    }
+                }
 
-                if (hit.collider.gameObject.CompareTag("RedSphere"))
+                    if (hit.collider.gameObject.CompareTag("RedSphere"))
                 {
 
                     GameManager.Instance.isRedSphereTaken = true;
+                    InteractionSound();
 
                     //Get the game object that the raycast hits and destroy it.
                     rayCasterObject = hit.collider.gameObject;
@@ -53,6 +66,7 @@ public class cameraRayCast : MonoBehaviour
                 {
 
                     GameManager.Instance.isGreenSphereTaken = true;
+                    InteractionSound();
 
                     //Get the game object that the raycast hits and destroy it.
                     rayCasterObject = hit.collider.gameObject;
@@ -62,6 +76,7 @@ public class cameraRayCast : MonoBehaviour
                 if (hit.collider.gameObject.CompareTag("YellowSphere"))
                 {
                     GameManager.Instance.isYellowSphereTaken = true;
+                    InteractionSound();
 
                     //Get the game object that the raycast hits and destroy it.
                     rayCasterObject = hit.collider.gameObject;
@@ -71,6 +86,7 @@ public class cameraRayCast : MonoBehaviour
                 if (hit.collider.gameObject.CompareTag("PurpleSphere"))
                 {
                     GameManager.Instance.isPurpleSpheretaken = true;
+                    InteractionSound();
 
                     //Get the game object that the raycast hits and destroy it.
                     rayCasterObject = hit.collider.gameObject;
@@ -79,6 +95,9 @@ public class cameraRayCast : MonoBehaviour
 
                 if (hit.collider.gameObject.CompareTag("StopButton"))
                 {
+                    InteractionSound();
+
+                    //Stop a different platform in every press in a sequence.
 
                     if (GameManager.Instance.isPlatform1Moving)
                     {
@@ -109,6 +128,8 @@ public class cameraRayCast : MonoBehaviour
 
                 if (hit.collider.gameObject.CompareTag("ResetButton"))
                 {
+                    //Restart the movment of the platforms.
+                    interaction.Play();
                     GameManager.Instance.isPlatform1Moving = true;
                     GameManager.Instance.isPlatform2Moving = true;
                     GameManager.Instance.isPlatform3Moving = true;
@@ -122,7 +143,15 @@ public class cameraRayCast : MonoBehaviour
         }
         else
         {
+            //If the player is not looking at an interactable object, then make the boolean false to disable the text.
             GameManager.Instance.isLookingAtInteractable = false;
         }
+    }
+
+
+    private void InteractionSound()
+    {
+        interaction.pitch = Random.Range(1.05f, 1.1f);
+        interaction.Play();
     }
 }

@@ -10,6 +10,8 @@ public class ArtifactLogic : MonoBehaviour
     private Material purpleLight;
     private Material greenLight;
     private Material redLight;
+
+    //Declare Materials State Vraiables
     private float red;
     private bool isRedRising = true;
     private float green;
@@ -21,12 +23,14 @@ public class ArtifactLogic : MonoBehaviour
 
     void Start()
     {
-        //Get the array of materials
+        //Assign each material to a certain material variable.
         getMaterial = GetComponent<Renderer>().materials;
         yellowLight = getMaterial[4];
         purpleLight = getMaterial[5];
         greenLight = getMaterial[3];
         redLight = getMaterial[2];
+
+        //Assign default values for the intensity level of each light
         red = 5.0f;
         yellow = 5.0f;
         purple = 5.0f;
@@ -92,37 +96,36 @@ public class ArtifactLogic : MonoBehaviour
     private void changeGreenValue()
     {
 
-        if (green < 5 || green > 50)
+        if (green < 5 || green > 15)
         {
             isGreenRising = !isGreenRising;
         }
 
         if (isGreenRising)
         {
-            green += 0.25f;
+            green += 0.1f;
         }
         else
         {
-            green -= 0.25f;
+            green -= 0.1f;
         }
     }
 
-
-        private void changePurpleValue()
+    private void changePurpleValue()
     {
 
-        if (purple < 5 || purple > 100)
+        if (purple < 5 || purple > 20)
         {
             isPurplerising = !isPurplerising;
         }
 
         if (isPurplerising)
         {
-            purple += 1;
+            purple += 0.1f;
         }
         else
         {
-            purple -= 1;
+            purple -= 0.1f;
         }
 
     }
@@ -137,22 +140,21 @@ public class ArtifactLogic : MonoBehaviour
         }
     }
 
-
     private void changeYellowValue()
     {
 
-        if (yellow < 5 || yellow > 50)
+        if (yellow < 5 || yellow > 15)
         {
             isYellowRising = !isYellowRising;
         }
 
         if (isYellowRising)
         {
-            yellow += 0.25f;
+            yellow += 0.1f;
         }
         else
         {
-            yellow -= 0.25f;
+            yellow -= 0.1f;
         }
         
     }

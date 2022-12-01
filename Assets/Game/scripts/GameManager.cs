@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,21 +11,17 @@ public class GameManager : MonoBehaviour
 
     //Chapter 1 Variables
 
-    public bool isYellowSphereTaken = false;
-    public bool isRedSphereTaken = false;
-    public bool isPurpleSpheretaken = false;
-    public bool isGreenSphereTaken = false;
+    public bool isYellowSphereTaken = false, isRedSphereTaken = false, isPurpleSpheretaken = false, isGreenSphereTaken = false;
 
-    public bool isPlatform1Moving = true;
-    public bool isPlatform2Moving = true;
-    public bool isPlatform3Moving = true;
-    public bool isPlatform4Moving = true;
-    public bool isPlatform5Moving = true;
-    public bool isPlatform6Moving = true;
+    public bool isPlatform1Moving = true, isPlatform2Moving = true, isPlatform3Moving = true, isPlatform4Moving = true, isPlatform5Moving = true, isPlatform6Moving = true;
 
     public bool hasGameStarted = false;
+    public bool isPlayerTouchGroundSurface = false;
 
     public bool isLookingAtInteractable = false;
+    public bool hasIntroPlayed = false;
+    public int chapter = 1;
+    public bool enableControls = false;
 
     //Check if the instance is null, if it is then add this script to the instance
 
@@ -34,6 +31,7 @@ public class GameManager : MonoBehaviour
 
             Instance = this;
 	}
+        DontDestroyOnLoad(this);
     }
 
     public void EnableGameplay()

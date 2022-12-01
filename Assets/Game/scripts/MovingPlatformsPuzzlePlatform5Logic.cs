@@ -72,14 +72,12 @@ public class MovingPlatformsPuzzlePlatform5Logic : MonoBehaviour
         if (isPlayerColliding)
         {
 
-            platfromMat.SetColor("_EmissiveColor", new Color(red = Mathf.Clamp(red = red += 1, 0, 5), blue = Mathf.Clamp(blue += 5, 0, 5), green = Mathf.Clamp(green += 5, 0, 5), 255));
+            platfromMat.SetColor("_EmissiveColor", new Color(red = Mathf.Clamp(red = red += 1, 0, 10), blue = Mathf.Clamp(blue += 5, 0, 10), green = Mathf.Clamp(green += 5, 0, 10), 255));
 
         }
         else
         {
-
-            platfromMat.SetColor("_EmissiveColor", new Color(red = Mathf.Clamp(red -= 5, 1, 5), blue = Mathf.Clamp(blue -= 5, 1, 5), green = Mathf.Clamp(green -= 5, 1, 5), 255));
-
+            platfromMat.SetColor("_EmissiveColor", new Color(red = Mathf.Clamp(red -= 5, 1, 10), blue = Mathf.Clamp(blue -= 5, 1, 10), green = Mathf.Clamp(green -= 5, 1, 10), 255));
         }
 
     }
