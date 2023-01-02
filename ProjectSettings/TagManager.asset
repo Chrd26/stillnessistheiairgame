@@ -4,30 +4,26 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - floor
-  - Lever
-  - InteractiveItems
-  - YellowSphere
-  - StopButton
   - ResetButton
-  - Boundary
-  - PurpleSphere
-  - GreenSphere
-  - RedSphere
+  - StopButton
   - Artifact
+  - GreenSphere
+  - PurpleSphere
+  - RedSphere
+  - YellowSphere
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Interactive Items
   - Water
   - UI
   - 
   - 
-  - Character
-  - Ground
-  - Interactive Items
-  - Post Processing
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

@@ -11,7 +11,6 @@ public class Hde_Unhide_Text : MonoBehaviour
     void Start()
     {
         getText = GetComponent<TMP_Text>();
-        getText.fontSize = 0;
     }
 
     // Update is called once per frame
@@ -19,11 +18,11 @@ public class Hde_Unhide_Text : MonoBehaviour
     {
         if (GameManager.Instance.isLookingAtInteractable)
         {
-            getText.fontSize = 12;
+            getText.enabled = true;
         }
         else
         {
-            getText.fontSize = 0;
+            getText.enabled = false;
         }
         
     }

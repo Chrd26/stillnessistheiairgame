@@ -33,9 +33,12 @@ public class LandGroundLogic : MonoBehaviour
 
     private void EnumarateAudioClips()
     {
-        randomClip = Random.Range(0, 5);
-        landGroundclip = landGroundClips[randomClip];
-        audioSource.clip = landGroundclip;
-        audioSource.pitch = Random.Range(1.0f, 1.05f);
+        if (!audioSource.isPlaying)
+        {
+            randomClip = Random.Range(0, 5);
+            landGroundclip = landGroundClips[randomClip];
+            audioSource.clip = landGroundclip;
+            audioSource.pitch = Random.Range(1.0f, 1.05f);
+        }
     }
 }

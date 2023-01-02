@@ -33,10 +33,13 @@ public class RunningDefaultLogic : MonoBehaviour
 
     private void EnumarateAudioClips()
     {
-        randomClip = Random.Range(0, 5);
-        runDefaultclip = runDefaultClips[randomClip];
-        audioSource.clip = runDefaultclip;
-        audioSource.pitch = Random.Range(1.0f, 1.05f);
+        if (!audioSource.isPlaying)
+        {
+            randomClip = Random.Range(0, 5);
+            runDefaultclip = runDefaultClips[randomClip];
+            audioSource.clip = runDefaultclip;
+            audioSource.pitch = Random.Range(1.0f, 1.05f);
+        }
     }
 }
 

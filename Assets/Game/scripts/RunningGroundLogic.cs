@@ -33,9 +33,12 @@ public class RunningGroundLogic : MonoBehaviour
 
     private void EnumarateAudioClips()
     {
-        randomClip = Random.Range(0, 5);
-        runningGroundclip = runningGroundClips[randomClip];
-        audioSource.clip = runningGroundclip;
-        audioSource.pitch = Random.Range(1.0f, 1.05f);
+        if (!audioSource.isPlaying)
+        {
+            randomClip = Random.Range(0, 4);
+            runningGroundclip = runningGroundClips[randomClip];
+            audioSource.clip = runningGroundclip;
+            audioSource.pitch = Random.Range(1.0f, 1.05f);
+        }
     }
 }

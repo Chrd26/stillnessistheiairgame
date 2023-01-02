@@ -36,8 +36,6 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(waitTime);
-
         if (GameManager.Instance.enableControls)
         {
             if (GameManager.Instance.isGreenSphereTaken && !hasTeleportedAtGreenSphere)
@@ -205,14 +203,14 @@ public class playerMovement : MonoBehaviour
     { 
         if (GameManager.Instance.isPlayerTouchGroundSurface)
         {
-            if (waitTime > 0.5)
+            if (waitTime > 0.45)
             {
                 if (!walkGroundSource.isPlaying)
                 {
                     walkGroundSource.Play();
                     runDefaultSource.volume = 1;
+                    waitTime = 0;
                 }
-                waitTime = 0;
             }
             else
             {
@@ -221,14 +219,14 @@ public class playerMovement : MonoBehaviour
         }
         else
         {
-            if (waitTime > 0.5)
+            if (waitTime > 0.45)
             {
                 if (!walkDefaultSource.isPlaying)
                 {
                     walkDefaultSource.Play();
-                    runDefaultSource.volume = 1;
-                }
-                waitTime = 0;
+                    runDefaultSource.volume = 3;
+                    waitTime = 0;
+                } 
             }
             else
             {
@@ -243,13 +241,13 @@ public class playerMovement : MonoBehaviour
     {
         if (GameManager.Instance.isPlayerTouchGroundSurface)
         {
-            if (waitTime2 > 0.3)
+            if (waitTime2 > 0.4)
             {
                 if (!runGroundSource.isPlaying)
                 {
                     runGroundSource.Play();
+                    waitTime2 = 0;
                 }
-                waitTime2 = 0;
             }
             else
             {
@@ -258,13 +256,13 @@ public class playerMovement : MonoBehaviour
         }
         else
         {
-            if (waitTime2 > 0.3)
+            if (waitTime2 > 0.4)
             {
                 if (!runDefaultSource.isPlaying)
                 {
                     runDefaultSource.Play();
+                    waitTime2 = 0;
                 }
-                waitTime2 = 0;
             }
             else
             {

@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Screen.SetResolution(1920, 1080 , FullScreenMode.Windowed);
+
         if (Instance == null) {
 
             Instance = this;

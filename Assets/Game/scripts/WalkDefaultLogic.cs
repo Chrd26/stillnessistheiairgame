@@ -33,9 +33,12 @@ public class WalkDefaultLogic : MonoBehaviour
 
     private void EnumarateAudioClips()
     {
-        randomClip = Random.Range(0, 5);
-        walkDefaultclip = walkDefaultClips[randomClip];
-        audioSource.clip = walkDefaultclip;
-        audioSource.pitch = Random.Range(1.0f, 1.05f);
+        if (!audioSource.isPlaying)
+        {
+            randomClip = Random.Range(0, 5);
+            walkDefaultclip = walkDefaultClips[randomClip];
+            audioSource.clip = walkDefaultclip;
+            audioSource.pitch = Random.Range(1.0f, 1.05f);
+        }
     }
 }
